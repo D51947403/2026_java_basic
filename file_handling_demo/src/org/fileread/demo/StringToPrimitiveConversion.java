@@ -22,7 +22,6 @@ public class StringToPrimitiveConversion {
 	            double doubleNum = Double.parseDouble(floatStr);
 	            System.out.println("Converted doubleNum value: " + doubleNum);
 	            
-	            
 	            boolean booleanValue = Boolean.parseBoolean(booleanStr);
 	            System.out.println("Converted booleanValue value: " + booleanValue);
 	            
