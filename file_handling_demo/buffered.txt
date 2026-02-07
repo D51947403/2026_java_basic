@@ -1,0 +1,2 @@
+BufferedWriter makes writing more efficient.
+It reduces disk I/O by using a buffer.
