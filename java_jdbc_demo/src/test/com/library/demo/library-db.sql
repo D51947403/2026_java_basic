@@ -52,3 +52,36 @@ INSERT INTO publisher_detail (publisher_name, publisher_code, publisher_address,
 
 -- select all publishers
 select * from publisher_detail ;
+
+-- create book table with foreign keys
+drop table if exists book_detail;
+create table book_detail(
+                         book_id int primary key auto_increment,
+                         book_title varchar(255) not null,
+                         isbn varchar(20) unique,
+                         author_id int,
+                         publisher_id int,
+                         publication_date date,
+                         price decimal(10,2),
+                         genre varchar(50),
+                         pages int,
+                         language varchar(30),
+                         foreign key (author_id) references author_detail(author_id),
+                         foreign key (publisher_id) references publisher_detail(publisher_id)
+)AUTO_INCREMENT = 3000 ;
+
+-- Insert 10 sample book records
+INSERT INTO book_detail (book_title, isbn, author_id, publisher_id, publication_date, price, genre, pages, language) VALUES
+('Harry Potter and the Sorcerer''s Stone', '978-0-439-70818-8', 1000, 2000, '1997-06-26', 12.99, 'Fantasy', 309, 'English'),
+('The Shining', '978-0-385-12167-5', 1001, 2001, '1977-01-28', 15.99, 'Horror', 447, 'English'),
+('Murder on the Orient Express', '978-0-00-711931-8', 1002, 2002, '1934-01-01', 13.99, 'Mystery', 256, 'English'),
+('1984', '978-0-452-28423-4', 1003, 2003, '1949-06-08', 14.99, 'Dystopian', 328, 'English'),
+('Pride and Prejudice', '978-0-14-143951-8', 1004, 2004, '1813-01-28', 9.99, 'Romance', 432, 'English'),
+('The Adventures of Tom Sawyer', '978-0-14-303945-5', 1005, 2005, '1876-01-01', 11.99, 'Adventure', 274, 'English'),
+('To the Lighthouse', '978-0-15-690739-8', 1006, 2006, '1927-05-05', 13.50, 'Modernist', 209, 'English'),
+('The Old Man and the Sea', '978-0-684-80391-9', 1007, 2007, '1952-09-01', 10.99, 'Fiction', 127, 'English'),
+('I Know Why the Caged Bird Sings', '978-0-345-50555-3', 1008, 2008, '1969-01-01', 14.99, 'Autobiography', 369, 'English'),
+('Beloved', '978-0-452-26446-3', 1009, 2009, '1987-09-01', 15.50, 'Fiction', 324, 'English');
+
+-- select all books
+select * from book_detail ;
