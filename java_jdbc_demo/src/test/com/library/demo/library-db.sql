@@ -148,3 +148,59 @@ ALTER TABLE student_detail ADD COLUMN is_deleted CHAR(1) DEFAULT 'N';
 
 -- select all students
 select * from student_detail;
+
+-- create library_stock_detail table
+-- create library_stock_detail table
+drop table if exists library_stock_detail;
+create table library_stock_detail(
+                                     stock_id int primary key auto_increment,
+                                     book_id int,
+                                     stock_count int,
+                                     created_date date DEFAULT (current_date),
+                                     updated_date date,
+                                     created_by_admin int,
+                                     updated_by_admin int,
+                                     is_deleted char(1) default 'N',
+                                     foreign key (book_id) references book_detail(book_id),
+                                     foreign key (created_by_admin) references admin_detail(admin_id),
+                                     foreign key (updated_by_admin) references admin_detail(admin_id)
+)auto_increment = 6000;
+
+-- select all library stock details
+select * from library_stock_detail;
+
+
+-- create book_issue_transactions table with default current date
+drop table if exists book_issue_transactions ;
+create table book_issue_transactions(
+                                        book_issue_id int primary key auto_increment,
+                                        book_id int,
+                                        student_id int,
+                                        issued_by_admin int,
+                                        issue_date date default (current_date),
+                                        due_date date,
+                                        return_date date,
+                                        fine_amount decimal(10,2) default 0.00,
+                                        issue_status varchar(3) default 'YES',
+                                        foreign key (book_id) references book_detail(book_id),
+                                        foreign key (student_id) references student_detail(student_id),
+                                        foreign key (issued_by_admin) references admin_detail(admin_id)
+)AUTO_INCREMENT = 7000 ;
+
+
+
+ALTER TABLE book_detail ADD COLUMN created_by_admin int default 4000 after language ;
+
+ALTER TABLE book_detail ADD COLUMN updated_by_admin int  after created_by_admin ;
+
+ALTER TABLE book_detail ADD COLUMN created_date date default (current_date) after updated_by_admin ;
+
+ALTER TABLE book_detail ADD COLUMN updated_date date  after created_date ;
+
+ALTER TABLE publisher_detail ADD COLUMN created_by_admin int default 4000 after publisher_phone ;
+
+ALTER TABLE publisher_detail ADD COLUMN updated_by_admin int  after created_by_admin ;
+
+ALTER TABLE publisher_detail ADD COLUMN created_date date default (current_date) after updated_by_admin ;
+
+ALTER TABLE publisher_detail ADD COLUMN updated_date date  after created_date ;
