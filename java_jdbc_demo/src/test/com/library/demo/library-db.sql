@@ -25,6 +25,8 @@ INSERT INTO author_detail (author_name, author_code, author_address, author_dob,
 ('Ernest Hemingway', 'EHM008', 'Oak Park, Illinois, USA', '1899-07-21', 'ernest.hemingway@example.com', 'High School Diploma', 'Oak Park High School'),
 ('Maya Angelou', 'MAG009', 'St. Louis, Missouri, USA', '1928-04-04', 'maya.angelou@example.com', 'Various Studies', 'Various Institutions'),
 ('Toni Morrison', 'TMO010', 'Lorain, Ohio, USA', '1931-02-18', 'toni.morrison@example.com', 'M.A. in English', 'Cornell University');
+
+ALTER TABLE author_detail ADD COLUMN is_deleted CHAR(1) DEFAULT 'N';
 -- select all authors
 select * from author_detail;
 -- create publisher table
@@ -50,6 +52,7 @@ INSERT INTO publisher_detail (publisher_name, publisher_code, publisher_address,
 ('Cambridge University Press', 'CUP009', '32 Avenue of the Americas, New York, NY 10013', 'info@cambridge.org', '+1-212-924-3900'),
 ('Bloomsbury Publishing', 'BLP010', '1385 Broadway, New York, NY 10018', 'contact@bloomsbury.com', '+1-646-307-5065');
 
+ALTER TABLE publisher_detail ADD COLUMN is_deleted CHAR(1) DEFAULT 'N';
 -- select all publishers
 select * from publisher_detail ;
 
@@ -83,5 +86,65 @@ INSERT INTO book_detail (book_title, isbn, author_id, publisher_id, publication_
 ('I Know Why the Caged Bird Sings', '978-0-345-50555-3', 1008, 2008, '1969-01-01', 14.99, 'Autobiography', 369, 'English'),
 ('Beloved', '978-0-452-26446-3', 1009, 2009, '1987-09-01', 15.50, 'Fiction', 324, 'English');
 
+ALTER TABLE book_detail ADD COLUMN is_deleted CHAR(1) DEFAULT 'N';
 -- select all books
 select * from book_detail ;
+--create admin_detail table
+drop table if exists admin_detail;
+create table admin_detail(
+                             admin_id int primary key auto_increment,
+                             admin_name varchar(100),
+                             admin_code varchar(20),
+                             admin_address varchar(255),
+                             admin_email varchar(50),
+                             admin_phone varchar (60),
+                             admin_salary int(11)
+)AUTO_INCREMENT = 4000 ;
+
+-- Insert 10 sample admin records
+INSERT INTO admin_detail (admin_name, admin_code, admin_address, admin_email, admin_phone, admin_salary) VALUES
+('John Anderson', 'ADM001', '123 Admin Street, New York, NY 10001', 'john.anderson@library.com', '+1-212-555-0101', 75000),
+('Sarah Mitchell', 'ADM002', '456 Manager Ave, New York, NY 10002', 'sarah.mitchell@library.com', '+1-212-555-0102', 82000),
+('Robert Chen', 'ADM003', '789 Supervisor Blvd, New York, NY 10003', 'robert.chen@library.com', '+1-212-555-0103', 68000),
+('Emily Rodriguez', 'ADM004', '321 Director Lane, New York, NY 10004', 'emily.rodriguez@library.com', '+1-212-555-0104', 95000),
+('Michael Thompson', 'ADM005', '654 Coordinator St, New York, NY 10005', 'michael.thompson@library.com', '+1-212-555-0105', 72000),
+('Lisa Wang', 'ADM006', '987 Operations Way, New York, NY 10006', 'lisa.wang@library.com', '+1-212-555-0106', 78000),
+('David Martinez', 'ADM007', '147 Executive Dr, New York, NY 10007', 'david.martinez@library.com', '+1-212-555-0107', 88000),
+('Jennifer Taylor', 'ADM008', '258 Manager Ct, New York, NY 10008', 'jennifer.taylor@library.com', '+1-212-555-0108', 76000),
+('James Wilson', 'ADM009', '369 Admin Plaza, New York, NY 10009', 'james.wilson@library.com', '+1-212-555-0109', 85000),
+('Maria Garcia', 'ADM010', '741 Supervisor Square, New York, NY 10010', 'maria.garcia@library.com', '+1-212-555-0110', 79000);
+
+ALTER TABLE admin_detail ADD COLUMN is_deleted CHAR(1) DEFAULT 'N';
+--select all admins
+select * from admin_detail;
+
+-- create student_detail table
+drop table if exists student_detail;
+create table student_detail(
+                               student_id int primary key auto_increment,
+                               student_name varchar(100),
+                               student_code varchar(20),
+                               student_address varchar(255),
+                               student_email varchar(50),
+                               student_phone varchar (60),
+                               student_credit int(11)
+)AUTO_INCREMENT = 5000 ;
+
+-- Insert 10 sample student records
+INSERT INTO student_detail (student_name, student_code, student_address, student_email, student_phone, student_credit) VALUES
+('Alex Johnson', 'STU001', '123 Campus Dr, New York, NY 10021', 'alex.johnson@university.edu', '+1-212-555-1001', 15),
+('Emma Davis', 'STU002', '456 College Ave, New York, NY 10022', 'emma.davis@university.edu', '+1-212-555-1002', 12),
+('Michael Brown', 'STU003', '789 University St, New York, NY 10023', 'michael.brown@university.edu', '+1-212-555-1003', 18),
+('Sophia Wilson', 'STU004', '321 Academic Blvd, New York, NY 10024', 'sophia.wilson@university.edu', '+1-212-555-1004', 9),
+('Daniel Lee', 'STU005', '654 Scholar Way, New York, NY 10025', 'daniel.lee@university.edu', '+1-212-555-1005', 14),
+('Olivia Martinez', 'STU006', '987 Learning Ln, New York, NY 10026', 'olivia.martinez@university.edu', '+1-212-555-1006', 16),
+('James Taylor', 'STU007', '147 Education Ct, New York, NY 10027', 'james.taylor@university.edu', '+1-212-555-1007', 11),
+('Isabella Anderson', 'STU008', '258 Student Plaza, New York, NY 10028', 'isabella.anderson@university.edu', '+1-212-555-1008', 20),
+('William Thomas', 'STU009', '369 Campus Square, New York, NY 10029', 'william.thomas@university.edu', '+1-212-555-1009', 13),
+('Ava Jackson', 'STU010', '741 College Park, New York, NY 10030', 'ava.jackson@university.edu', '+1-212-555-1010', 17);
+
+-- add is_deleted column to student_detail table
+ALTER TABLE student_detail ADD COLUMN is_deleted CHAR(1) DEFAULT 'N';
+
+-- select all students
+select * from student_detail;
