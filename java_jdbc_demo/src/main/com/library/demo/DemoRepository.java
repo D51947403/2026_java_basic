@@ -4,10 +4,14 @@ import java.sql.*;
 
 class DemoRepository {
     public static void main(String[] args) throws Exception {
+        //MySQL
         String url = "jdbc:mysql://localhost:3306/library_db"; // Database details
-        String username = "******"; // MySQL credentials
-        String password = "******";//MySQL credentials
+        String username = "********"; // MySQL credentials
+        String password = "**********";//MySQL credentials
         String mySqlDriver="com.mysql.cj.jdbc.Driver";
+
+
+
         String query = "select * from admin_detail"; // Query to be run
 
         // Load and register the driver
@@ -24,12 +28,15 @@ class DemoRepository {
         ResultSet rs = st.executeQuery(query);
 
         // Process the results
-        int i=1;
         while (rs.next()) {
-            String value = rs.getString(i);
-            System.out.print(value+" "); // Print result on console
+            String value1 = rs.getString(1);
+            String value2 = rs.getString(2);
+            String adminCode =rs.getString("admin_code");
+            int admin_salary =rs.getInt("admin_salary");
+            System.out.print(value1+" "+value2+" "+adminCode+" "+admin_salary);
+            System.out.println();
         }
-        System.out.println();
+       // System.out.println();
         // Close the statement and connection
         st.close();
         con.close();
