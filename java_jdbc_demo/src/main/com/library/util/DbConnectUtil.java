@@ -1,4 +1,4 @@
-package main.com.library.demo;
+package main.com.library.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,8 +7,8 @@ import java.sql.SQLException;
 public class DbConnectUtil {
 
     private static final String url = "jdbc:mysql://localhost:3306/library_db"; // Database details
-    private static final  String username = "********"; // MySQL credentials
-    private static final String password = "**********";//MySQL credentials
+    private static final  String username = "*****"; // MySQL credentials
+    private static final String password = "******";//MySQL credentials
     private static final String mySqlDriver="com.mysql.cj.jdbc.Driver";
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
         // Load and register the driver
