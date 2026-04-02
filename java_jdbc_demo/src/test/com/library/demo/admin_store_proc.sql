@@ -16,7 +16,7 @@ CREATE  PROCEDURE admin_crud(
 BEGIN
       SET o_count = 0;
       SET o_message='SQL query not executed';
-  if i_operation_type ='READ' then
+IF i_operation_type ='READ' then
 select admin_id ,admin_name, admin_code, admin_address, admin_email,admin_phone,admin_salary
 from admin_detail where admin_id=i_admin_id and is_deleted='N';
 SET o_message='Record fetched successfully';
@@ -48,6 +48,9 @@ select admin_id ,admin_name, admin_code, admin_address, admin_email,admin_phone,
        admin_salary from admin_detail where admin_name like concat('%',i_admin_name,'%')
                                          or admin_code like concat('ADM',i_admin_code) and is_deleted='N';
 SET o_message='Record searched successfully';
+   elseif i_operation_type ='COUNT' then
+select count(*) into o_count from admin_detail  where is_deleted='N';
+SET o_message='Record count calculated successfully';
 END IF;
-END$$
+END$$;
 DELIMITER ;

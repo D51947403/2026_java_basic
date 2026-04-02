@@ -8,7 +8,7 @@ public class DbConnectUtil {
 
     private static final String URL = "jdbc:mysql://localhost:3306/library_db"; // Database details
     private static final  String USER_NAME = "*****"; // MySQL credentials
-    private static final String PASSWORD = "*********";//MySQL credentials
+    private static final String PASSWORD = "*****";//MySQL credentials
     private static final String MYSQL_DRIVER="com.mysql.cj.jdbc.Driver";
 
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
