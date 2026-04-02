@@ -1,8 +1,7 @@
-package main.com.library.demo.repository;
+package main.com.library.repository;
 
 import main.com.library.dto.AuthorDTO;
 import main.com.library.util.DbConnectUtil;
-import sun.java2d.StateTrackable;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

@@ -1,4 +1,4 @@
-package main.com.library.demo.controller;
+package main.com.library.controller;
 
 import main.com.library.dto.AdminDTO;
 import main.com.library.service.AdminService;

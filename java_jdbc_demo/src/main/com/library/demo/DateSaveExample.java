@@ -1,4 +1,4 @@
-package main.com.library.demo.repository;
+package main.com.library.demo;
 
 import main.com.library.util.DateUtility;
 import main.com.library.util.DbConnectUtil;

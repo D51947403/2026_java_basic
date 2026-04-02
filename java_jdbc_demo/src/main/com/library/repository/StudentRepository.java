@@ -1,9 +1,8 @@
-package main.com.library.demo.repository;
+package main.com.library.repository;
 
 import main.com.library.dto.StudentDTO;
 
 import java.sql.*;
-import java.util.List;
 
 
 public class StudentRepository {

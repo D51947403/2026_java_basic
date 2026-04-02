@@ -1,7 +1,7 @@
 package main.com.library.service;
 
-import main.com.library.demo.repository.AdminRepository;
-import main.com.library.demo.repository.AdminRepositoryImpl;
+import main.com.library.repository.AdminRepository;
+import main.com.library.repository.AdminRepositoryImpl;
 import main.com.library.dto.AdminDTO;
 
 import java.util.List;
