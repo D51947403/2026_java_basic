@@ -1,23 +1,41 @@
 package main.com.library.util;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class DbConnectUtil {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/library_db"; // Database details
-    private static final  String USER_NAME = "****"; // MySQL credentials
-    private static final String PASSWORD = "****";//MySQL credentials
-    private static final String MYSQL_DRIVER="com.mysql.cj.jdbc.Driver";
+    private static Properties properties = new Properties();
+    private static final String PROPERTIES_FILE = "D:\\2026_java_notes\\database_secret\\application.properties";
+    static {
+        loadProperties();
+    }
+    
+    private static void loadProperties() {
+        try (FileInputStream fis = new FileInputStream(PROPERTIES_FILE)) {
+            properties.load(fis);
+            System.out.println("Properties file loaded successfully from: " + PROPERTIES_FILE);
+        } catch (IOException e) {
+            System.err.println("Error loading properties file: " + e.getMessage());
+        }
+    }
 
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
         // Load and register the driver
-        Class.forName(MYSQL_DRIVER);
+        Class.forName(properties.getProperty("db.driver"));
+        
+        // Get connection details from properties
+        String url = properties.getProperty("db.url");
+        String username = properties.getProperty("db.username");
+        String password = properties.getProperty("db.password");
         
         // Establish connection
-        Connection connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
-        System.out.println("Connection Established successfully");
+        Connection connection = DriverManager.getConnection(url, username, password);
+        System.out.println("Connection Established successfully to: " + url);
         
         return connection;
     }
@@ -31,5 +49,16 @@ public class DbConnectUtil {
                 System.err.println("Error closing connection: " + e.getMessage());
             }
         }
+    }
+    
+    // Utility method to get property value
+    public static String getProperty(String key) {
+        return properties.getProperty(key);
+    }
+    
+    // Utility method to reload properties
+    public static void reloadProperties() {
+        loadProperties();
+        System.out.println("Properties reloaded successfully");
     }
 }

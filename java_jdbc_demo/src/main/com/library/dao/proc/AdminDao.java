@@ -1,4 +1,4 @@
-package main.com.library.dao;
+package main.com.library.dao.proc;
 
 import main.com.library.dto.AdminDTO;
 import main.com.library.util.Constants;

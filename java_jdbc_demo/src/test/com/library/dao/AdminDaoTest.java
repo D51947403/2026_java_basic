@@ -1,6 +1,6 @@
 package test.com.library.dao;
 
-import main.com.library.dao.AdminDao;
+import main.com.library.dao.proc.AdminDao;
 import main.com.library.dto.AdminDTO;
 import main.com.library.util.Constants;
 import org.junit.jupiter.api.*;
