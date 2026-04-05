@@ -247,3 +247,15 @@ DELIMITER ;
 -- Test the specific book stock function
 SELECT count_book_stock(3000) AS book_3000_stock;
 
+
+drop table if exists book_image ;
+create table book_image(
+                           image_id int primary key auto_increment,
+                           book_id int default 3001 ,
+                           front_image BLOB,
+                           back_image BLOB,
+                           foreign key (book_id) references book_detail(book_id)
+)auto_increment=7000;
+
+select * from book_image ;
+
