@@ -10,7 +10,7 @@ import java.util.Properties;
 public class DbConnectUtil {
 
     private static Properties properties = new Properties();
-    private static final String PROPERTIES_FILE = "D:\\2026_java_notes\\database_secret\\application.properties";
+    private static final String PROPERTIES_FILE = "D:\\2026_java_notes\\application_secret\\database-secrets.properties";
     static {
         loadProperties();
     }
