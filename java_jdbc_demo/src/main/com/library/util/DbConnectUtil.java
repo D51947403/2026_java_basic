@@ -61,4 +61,6 @@ public class DbConnectUtil {
         loadProperties();
         System.out.println("Properties reloaded successfully");
     }
+    
+
 }

@@ -25,6 +25,18 @@ public class DateUtility {
         return dateFormat.format(date);
     }
 
+    /**
+     * Converts java.util.Date to java.sql.Date
+     * @param utilDate the java.util.Date to convert
+     * @return java.sql.Date equivalent, or null if input is null
+     */
+    public static java.sql.Date convertUtilToSqlDate(java.util.Date utilDate) {
+        if (utilDate == null) {
+            return null;
+        }
+        return new java.sql.Date(utilDate.getTime());
+    }
+
     public static void main(String[] args) {
         System.out.println(getDateFromCustomString("2023-01-01"));
         System.out.println(getCustomStringFromDate(new Date()));
