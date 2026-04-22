@@ -1,4 +1,4 @@
-package main.com.library.util;// Java program to demonstrate Properties class to get all
+package main.com.library.propetiesdemo;// Java program to demonstrate Properties class to get all
 // the system properties
 
 import java.util.*;
