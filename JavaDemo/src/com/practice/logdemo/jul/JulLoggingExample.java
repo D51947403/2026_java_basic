@@ -1,4 +1,4 @@
-package com.practice.logdemo;
+package com.practice.logdemo.jul;
 
 import java.util.logging.*;
 import java.io.IOException;
