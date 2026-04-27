@@ -1,5 +1,8 @@
 package com.practice.logdemo;
 
+import com.practice.logdemo.jul.JulLoggingExample;
+import com.practice.logdemo.slf4j.Slf4jLoggingExample;
+
 public class LoggingDemo {
     
     public static void main(String[] args) {

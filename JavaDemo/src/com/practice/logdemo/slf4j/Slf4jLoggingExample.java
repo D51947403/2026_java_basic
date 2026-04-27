@@ -1,12 +1,12 @@
-package com.practice.logdemo;
+package com.practice.logdemo.slf4j;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
-
+//SLF4J (Simple Logging Facade for Java)
 public class Slf4jLoggingExample {
     private static final Logger logger = LoggerFactory.getLogger(Slf4jLoggingExample.class);
-    
+
     public static void demonstrateBasicLogging() {
         logger.info("=== SLF4J Basic Logging Demo ===");
         
