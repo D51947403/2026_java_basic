@@ -133,13 +133,13 @@ public class SendEmail {
 
             emailSender.sendEmail(
                 "singrauld@yahoo.com,deepnarayanlodhi1@gmail.com",
-                "devendra20790@gmail.com",
-                "Test2 Subject2",
-                "This is a test email sent from Java application."
+                "singraul20codeblog@gmail.com",
+                "Test20 Subject20",
+                "This is a test email sent from Java application developed by Devendra"
             );
-            emailSender.sendEmailWithAttachment("singrauld@yahoo.com,deepnarayanlodhi1@gmail.com", "devendra20790@gmail.com", "Test2 with attachment Subject2", "This is a test email sent from Java application with attachment.", "D:\\2026_java_notes\\app_images\\front_image.jpg");
+            emailSender.sendEmailWithAttachment("singrauld@yahoo.com,deepnarayanlodhi1@gmail.com", "singraul20codeblog@gmail.com", "Test2 with attachment Subject2", "This is a test email sent from Java application with attachment.", "D:\\2026_java_notes\\app_images\\front_image.jpg");
 
-            emailSender.sendHtmlEmail("singrauld@yahoo.com,deepnarayanlodhi1@gmail.com", "devendra20790@gmail.com", "Test2 HTML Subject2", "<h1>This is a test HTML email sent from Java application.</h1>");
+            emailSender.sendHtmlEmail("singrauld@yahoo.com,deepnarayanlodhi1@gmail.com", "singraul20codeblog@gmail.com", "Test2 HTML Subject2", "<h1>This is a test HTML email sent from Java application.</h1>");
         } catch (MessagingException e) {
             System.err.println("Error sending email: " + e.getMessage());
             e.printStackTrace();

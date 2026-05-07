@@ -230,7 +230,7 @@ public class BookImageDao {
         BookImageDao bookImageDao = new BookImageDao();
         
         // Example 1: Add book image using file paths
-       //  bookImageDao.addBookImage(3001, "D:\\2026_java_notes\\app_images\\front_image.jpg", "D:\\2026_java_notes\\app_images\\back_image.jpg");
+         bookImageDao.addBookImage(3001, "D:\\2026_java_notes\\app_images\\front_image.jpg", "D:\\2026_java_notes\\app_images\\back_image.jpg");
         
         // Example 2: Add book image using byte arrays
         byte[] frontImageData = new byte[1024];
@@ -241,10 +241,10 @@ public class BookImageDao {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-       // bookImageDao.addBookImageWithByteArray(3002, frontImageData, backImageData);
+        bookImageDao.addBookImageWithByteArray(3002, frontImageData, backImageData);
         
         // Example 3: Retrieve book image
-        // bookImageDao.getBookImage(7001);
+         bookImageDao.getBookImage(7001);
         
         // Example 4: Update book image
          bookImageDao.updateBookImage(7000, "D:\\2026_java_notes\\app_images\\front_image.jpg", "D:\\2026_java_notes\\app_images\\back_image.jpg");
