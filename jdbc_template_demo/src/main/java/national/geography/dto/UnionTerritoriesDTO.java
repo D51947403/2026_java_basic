@@ -19,7 +19,7 @@ public class UnionTerritoriesDTO {
     private String currentChiefMinister;
     private int numberOfDistricts;
     private String majorCities;
-    private String countryId;
+    private int countryId;
 
     public String getUnionTerritoryCode() {
         return unionTerritoryCode;
