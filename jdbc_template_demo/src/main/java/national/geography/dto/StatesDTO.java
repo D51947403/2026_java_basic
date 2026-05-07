@@ -19,7 +19,7 @@ public class StatesDTO {
     private String currentChiefMinister;
     private int numberOfDistricts;
     private String majorCities;
-    private String countryId;
+    private int countryId;
 
     public int getStateId() {
         return stateId;
@@ -149,11 +149,11 @@ public class StatesDTO {
         this.majorCities = majorCities;
     }
 
-    public String getCountryId() {
+    public int getCountryId() {
         return countryId;
     }
 
-    public void setCountryId(String countryId) {
+    public void setCountryId(int countryId) {
         this.countryId = countryId;
     }
 

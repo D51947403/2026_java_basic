@@ -149,11 +149,11 @@ public class UnionTerritoriesDTO {
         this.majorCities = majorCities;
     }
 
-    public String getCountryId() {
+    public int getCountryId() {
         return countryId;
     }
 
-    public void setCountryId(String countryId) {
+    public void setCountryId(int countryId) {
         this.countryId = countryId;
     }
 
