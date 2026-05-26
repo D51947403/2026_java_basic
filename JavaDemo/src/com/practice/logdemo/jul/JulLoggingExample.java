@@ -9,23 +9,23 @@ public class JulLoggingExample {
     static {
         try {
             // Configure file handler
-            FileHandler fileHandler = new FileHandler("jul_logging.log", true);
+            FileHandler fileHandler = new FileHandler("jul_logging_20May2026.log", false);
             fileHandler.setFormatter(new SimpleFormatter());
             logger.addHandler(fileHandler);
-            
+
             // Configure console handler with custom formatter
             ConsoleHandler consoleHandler = new ConsoleHandler();
             consoleHandler.setFormatter(new CustomFormatter());
             logger.addHandler(consoleHandler);
-            
+
             // Set logging level
             logger.setLevel(Level.ALL);
-            
+
         } catch (IOException e) {
             logger.severe("Failed to initialize file handler: " + e.getMessage());
         }
     }
-    
+
     public static void demonstrateBasicLogging() {
         logger.info("=== JUL Basic Logging Demo ===");
         
@@ -76,7 +76,7 @@ public class JulLoggingExample {
     public static void demonstrateMethodLogging() {
         logger.entering(JulLoggingExample.class.getName(), "demonstrateMethodLogging");
         
-        logger.info("Processing method execution");
+        logger.info("Processing method execution : demonstrateMethodLogging");
         
         try {
             // Simulate some work
@@ -87,7 +87,7 @@ public class JulLoggingExample {
             logger.log(Level.WARNING, "Method execution interrupted", e);
             Thread.currentThread().interrupt();
         }
-        
+        logger.info("exiting method execution : demonstrateMethodLogging");
         logger.exiting(JulLoggingExample.class.getName(), "demonstrateMethodLogging");
     }
     
@@ -126,10 +126,10 @@ public class JulLoggingExample {
     }
     
     public static void main(String[] args) {
-        demonstrateBasicLogging();
-        demonstrateParameterLogging();
-        demonstrateExceptionLogging();
-        demonstrateMethodLogging();
-        demonstrateLoggerHierarchy();
+      //  demonstrateBasicLogging();
+    //    demonstrateParameterLogging();
+      //  demonstrateExceptionLogging();
+     //  demonstrateMethodLogging();
+       demonstrateLoggerHierarchy();
     }
 }

@@ -1,4 +1,4 @@
-package com.practice.logdemo.slf4j;
+package com.practice.logdemo.slf4j.simple;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

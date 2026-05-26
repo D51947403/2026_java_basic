@@ -4,9 +4,6 @@ This package contains comprehensive examples of Java logging frameworks and best
 
 ## Files Overview
 
-### `LoggingDemo.java`
-Main orchestrator class that demonstrates both logging frameworks and provides comparison.
-
 ### `JulLoggingExample.java`
 Complete examples of Java Util Logging (JUL) - the built-in Java logging framework.
 
