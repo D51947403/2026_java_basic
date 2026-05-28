@@ -1,10 +1,14 @@
-package com.practice.logdemo.slf4j.log4j;
+package main.java.com.demo;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.MDC;
 
 //SLF4J Logging with Properties File Configuration
+//Direct jar links:
+// https://repo1.maven.org/maven2/log4j/log4j/1.2.17/log4j-1.2.17.jar
+//https://repo1.maven.org/maven2/org/slf4j/slf4j-log4j12/1.7.33/
+//https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.33/slf4j-api-1.7.33.jar
 public class Log4jPropertiesConfig {
     private static final Logger logger = LoggerFactory.getLogger(Log4jPropertiesConfig.class);
 
@@ -85,33 +89,7 @@ public class Log4jPropertiesConfig {
             logger.trace("Trace level is enabled - performing detailed analysis");
         }
     }
-    
-    public static void demonstrateMDCLogging() {
-        logger.info("=== SLF4J MDC with Properties Config Demo ===");
-        
-        // Clear any existing MDC
-        MDC.clear();
-        
-        // Add context information
-        MDC.put("userId", "user123");
-        MDC.put("sessionId", "session456");
-        MDC.put("requestId", "req789");
-        MDC.put("clientIP", "192.168.1.100");
-        
-        logger.info("User action performed");
-        logger.warn("Suspicious activity detected");
-        logger.error("Critical error occurred");
-        
-        // Update MDC values
-        MDC.put("userId", "admin");
-        MDC.put("operation", "system_maintenance");
-        
-        logger.info("System maintenance started");
-        
-        // Clear MDC
-        MDC.clear();
-        logger.info("MDC cleared - logging without context");
-    }
+
     
     public static void demonstrateMarkerLogging() {
         logger.info("=== SLF4J Marker Logging with Properties Config Demo ===");
@@ -130,24 +108,6 @@ public class Log4jPropertiesConfig {
         
         logger.info(businessMarker, "Order #12345 processed successfully");
         logger.error(businessMarker, "Payment processing failed for order #12346");
-    }
-    
-    public static void demonstrateFluentLogging() {
-        logger.info("=== SLF4J Fluent Logging with Properties Config Demo ===");
-        
-        // Note: Fluent API requires additional dependencies (logback-classic)
-        // This is a conceptual example
-        
-        String user = "Alice";
-        String action = "login";
-        boolean success = true;
-        
-        // Standard SLF4J logging (always available)
-        logger.info("User {} performed action: {} - Success: {}", user, action, success);
-        
-        // Demonstrate different logging patterns
-        logger.atInfo().log("Simple info message");
-        logger.atWarn().addKeyValue("user", user).addKeyValue("action", action).log("User action completed");
     }
     
     // Helper method to simulate expensive operation
@@ -180,12 +140,6 @@ public class Log4jPropertiesConfig {
         } catch (Exception e) {
             logger.error("Error occurred while processing user request", e);
         }
-        
-        // 4. Include context in log messages
-        MDC.put("operation", "user_registration");
-        MDC.put("userId", "new_user_123");
-        logger.info("User registration completed successfully");
-        MDC.clear();
     }
     
     public static void demonstratePropertiesConfiguration() {
@@ -203,22 +157,16 @@ public class Log4jPropertiesConfig {
         
         // Appender configuration controlled by properties
         logger.info("Console and file appenders configured via properties");
-        
-        // MDC pattern controlled by properties
-        MDC.put("configType", "properties");
-        logger.info("MDC pattern inclusion controlled by properties configuration");
-        MDC.clear();
+
     }
     
     public static void main(String[] args) {
         demonstrateBasicLogging();
-        demonstrateParameterizedLogging();
-        demonstrateExceptionLogging();
-        demonstrateConditionalLogging();
-        demonstrateMDCLogging();
-        demonstrateMarkerLogging();
-        demonstrateFluentLogging();
-        demonstrateLoggingBestPractices();
-        demonstratePropertiesConfiguration();
+//        demonstrateParameterizedLogging();
+//        demonstrateExceptionLogging();
+//        demonstrateConditionalLogging();
+//        demonstrateMarkerLogging();
+//        demonstrateLoggingBestPractices();
+//        demonstratePropertiesConfiguration();
     }
 }
