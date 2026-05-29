@@ -17,14 +17,12 @@ public class JulLoggingXmlConfig {
             loadXmlConfiguration();
             logger.info("XML logging configuration loaded successfully");
         } catch (IOException e) {
-            // Fallback to basic configuration if XML loading fails
-            setupFallbackConfiguration();
             logger.warning("Failed to load XML configuration, using fallback setup: " + e.getMessage());
         }
     }
     
     private static void loadXmlConfiguration() throws IOException {
-        String xmlConfigFileName = "logging.xml";
+        String xmlConfigFileName = "com/practice/logdemo/jul/logging.xml";
         InputStream configStream = JulLoggingXmlConfig.class.getClassLoader().getResourceAsStream(xmlConfigFileName);
         
         if (configStream != null) {
@@ -34,29 +32,7 @@ public class JulLoggingXmlConfig {
             throw new IOException("XML configuration file not found: " + xmlConfigFileName);
         }
     }
-    
-    private static void setupFallbackConfiguration() {
-        try {
-            // Basic fallback configuration using standalone CustomFormatter
-            GlobalCustomFormatter formatter = new GlobalCustomFormatter();
-            
-            // Console handler
-            ConsoleHandler consoleHandler = new ConsoleHandler();
-            consoleHandler.setFormatter(formatter);
-            logger.addHandler(consoleHandler);
-            
-            // File handler
-            FileHandler fileHandler = new FileHandler("jul_xml_fallback.log", true);
-            fileHandler.setFormatter(formatter);
-            logger.addHandler(fileHandler);
-            
-            logger.setLevel(Level.INFO);
-            
-        } catch (IOException e) {
-            System.err.println("Failed to setup fallback logging configuration: " + e.getMessage());
-        }
-    }
-    
+
     public static void demonstrateXmlConfigLogging() {
         logger.info("=== JUL XML Configuration Logging Demo ===");
         

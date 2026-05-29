@@ -3,8 +3,6 @@ package com.practice.logdemo.jul;
 import java.util.logging.*;
 import java.io.IOException;
 import java.io.InputStream;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class JulLoggingPropertiesConfig {
     private static final Logger logger = Logger.getLogger(JulLoggingPropertiesConfig.class.getName());
@@ -15,14 +13,12 @@ public class JulLoggingPropertiesConfig {
             loadLoggingConfiguration();
             logger.info("Logging configuration loaded successfully from logging.properties");
         } catch (IOException e) {
-            // Fallback to basic configuration if file loading fails
-            setupFallbackConfiguration();
             logger.warning("Failed to load logging configuration, using fallback setup: " + e.getMessage());
         }
     }
     
     private static void loadLoggingConfiguration() throws IOException {
-        String configFileName = "logging.properties";
+        String configFileName = "com/practice/logdemo/jul/logging.properties";
         InputStream configStream = JulLoggingPropertiesConfig.class.getClassLoader().getResourceAsStream(configFileName);
         
         if (configStream != null) {
@@ -30,30 +26,6 @@ public class JulLoggingPropertiesConfig {
             configStream.close();
         } else {
             throw new IOException("Configuration file not found: " + configFileName);
-        }
-    }
-    
-    private static void setupFallbackConfiguration() {
-        try {
-            // Basic fallback configuration
-            SimpleFormatter formatter = new SimpleFormatter();
-            
-            // Console handler
-            ConsoleHandler consoleHandler = new ConsoleHandler();
-            consoleHandler.setFormatter(formatter);
-            logger.addHandler(consoleHandler);
-            
-            // File handler with timestamp
-            String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH_mm_ss"));
-            String fileName = "jul_fallback_" + timestamp + ".log";
-            FileHandler fileHandler = new FileHandler(fileName, true);
-            fileHandler.setFormatter(formatter);
-            logger.addHandler(fileHandler);
-            
-            logger.setLevel(Level.INFO);
-            
-        } catch (IOException e) {
-            System.err.println("Failed to setup fallback logging configuration: " + e.getMessage());
         }
     }
     
