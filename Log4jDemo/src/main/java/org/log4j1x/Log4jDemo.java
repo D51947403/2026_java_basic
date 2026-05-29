@@ -8,7 +8,8 @@ public class Log4jDemo {
 
     public static void main(String[] args) {
         // Initialize log4j configuration
-        PropertyConfigurator.configure("src/main/resources/log4j.properties");
+        PropertyConfigurator.configure("log4j.properties");
+      // PropertyConfigurator.configure("src/main/resources/log4j.xml");
 
         logger.trace("This is a TRACE message");
         logger.debug("This is a DEBUG message");
