@@ -53,7 +53,7 @@ public class Log4jJavaConfigDemo {
         layout.setConversionPattern("%d{ISO8601} [%t] %-5p %c{2}:%L - %m%n");
 
         fileAppender.setLayout(layout);
-        fileAppender.setFile("logs/java-config-file.log");
+        fileAppender.setFile("applogs/java-config-file.log");
         fileAppender.setAppend(true);
         fileAppender.activateOptions();
 
@@ -77,9 +77,9 @@ public class Log4jJavaConfigDemo {
         layout.setConversionPattern("%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p [%t] %c{1}:%L - %m%n");
         
         rollingAppender.setLayout(layout);
-        rollingAppender.setFile("logs/java-config-rolling.log");
+        rollingAppender.setFile("applogs/java-config-rolling.log");
         rollingAppender.setAppend(true);
-        rollingAppender.setMaxFileSize("1MB");
+        rollingAppender.setMaxFileSize("1KB");
         rollingAppender.setMaxBackupIndex(5);
         rollingAppender.activateOptions();
         
@@ -97,7 +97,7 @@ public class Log4jJavaConfigDemo {
         layout.setConversionPattern("%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1} - %m%n");
         
         dailyRollingAppender.setLayout(layout);
-        dailyRollingAppender.setFile("logs/java-config-daily.log");
+        dailyRollingAppender.setFile("applogs/java-config-daily.log");
         dailyRollingAppender.setAppend(true);
         dailyRollingAppender.setDatePattern("'.'yyyy-MM-dd");
         dailyRollingAppender.activateOptions();

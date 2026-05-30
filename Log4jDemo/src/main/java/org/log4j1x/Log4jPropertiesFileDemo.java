@@ -7,8 +7,10 @@ public class Log4jPropertiesFileDemo {
     private static final Logger logger = Logger.getLogger(Log4jPropertiesFileDemo.class);
     public static void main(String[] args) {
         // Initialize log4j configuration
-        PropertyConfigurator.configure("log4j.properties");
-
+        //if log4j.properties is in src/main/resources directory
+        PropertyConfigurator.configure("src/main/resources/log4j.properties");
+        // if root log4j.properties is in directory
+        //  PropertyConfigurator.configure("log4j.properties");
         logger.trace("This is a TRACE message");
         logger.debug("This is a DEBUG message");
         logger.info("This is an INFO message");
