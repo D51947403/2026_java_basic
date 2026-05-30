@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <!-- 1. All Appenders must come first -->
+    <!-- Console Appender -->
+    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"/>
+        </layout>
+    </appender>
+
+    <!-- File Appender (Rolling File) -->
+    <appender name="rollingFile" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="errorlogs/error.log"/>
+        <param name="MaxFileSize" value="1KB"/>
+        <param name="MaxBackupIndex" value="5"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"/>
+        </layout>
+    </appender>
+
+    <!-- 2. Loggers/Categories come second -->
+    <!-- Package-specific loggers -->
+    <logger name="org.log4j1x" additivity="false">
+        <level value="DEBUG"/>
+        <appender-ref ref="stdout"/>
+        <appender-ref ref="rollingFile"/>
+    </logger>
+
+    <!-- 3. The Root element must always stay at the bottom -->
+    <!-- Root Logger -->
+    <root>
+        <priority value="DEBUG"/>
+        <appender-ref ref="stdout"/>
+        <appender-ref ref="rollingFile"/>
+    </root>
+
+</log4j:configuration>
