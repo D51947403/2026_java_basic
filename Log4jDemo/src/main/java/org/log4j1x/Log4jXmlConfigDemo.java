@@ -1,15 +1,15 @@
 package org.log4j1x;
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
+import org.apache.log4j.xml.DOMConfigurator;
 
-public class Log4jDemo {
+public class Log4jXmlConfigDemo {
     // Get logger instance
-    private static final Logger logger = Logger.getLogger(Log4jDemo.class);
+    private static final Logger logger = Logger.getLogger(Log4jXmlConfigDemo.class);
 
     public static void main(String[] args) {
         // Initialize log4j configuration
-        PropertyConfigurator.configure("log4j.properties");
-      // PropertyConfigurator.configure("src/main/resources/log4j.xml");
+
+       DOMConfigurator.configure("src/main/resources/log4j.xml");
 
         logger.trace("This is a TRACE message");
         logger.debug("This is a DEBUG message");
@@ -32,4 +32,5 @@ public class Log4jDemo {
 
         logger.info("Log4j 1.x demonstration completed successfully!");
     }
+
 }

@@ -18,8 +18,8 @@
 
     <!-- File Appender (Rolling File) -->
     <appender name="file" class="org.apache.log4j.RollingFileAppender">
-        <param name="File" value="logs/application.log"/>
-        <param name="FileNamePattern" value="logs/application-%d{yyyy-MM-dd}.%i.log"/>
+        <param name="File" value="errorlogs/error.log"/>
+        <param name="FileNamePattern" value="errorlogs/error-%d{yyyy-MM-dd}.%i.log"/>
         <param name="MaxFileSize" value="1KB"/>
         <param name="MaxBackupIndex" value="5"/>
         <layout class="org.apache.log4j.PatternLayout">
