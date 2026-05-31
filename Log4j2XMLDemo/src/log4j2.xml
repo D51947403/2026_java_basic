@@ -62,22 +62,22 @@
         -->
 
         <!-- JDBC Appender - Log to database (Configure database connection) -->
-        <!-- Uncomment and configure database settings to enable -->
-        <!--
-        <JDBC name="DATABASE" tableName="logs">
-            <ConnectionFactory>
-                <DriverManager connectionString="jdbc:mysql://localhost:3306/logs"
-                               userName="logger" password="password"
-                               driverClassName="com.mysql.cj.jdbc.Driver"/>
-            </ConnectionFactory>
-            <Column name="id" pattern="%u"/>
-            <Column name="event_date" isEventTimestamp="true"/>
-            <Column name="level" pattern="%level"/>
-            <Column name="logger" pattern="%logger"/>
-            <Column name="message" pattern="%message"/>
-            <Column name="exception" pattern="%ex{full}"/>
+        <JDBC name="DatabaseAppender" tableName="application_logs">
+            <!-- Replace with your actual database connection properties -->
+            <DriverManager connectionString="jdbc:mysql://localhost:3306/demo"
+                           driverClassName="com.mysql.cj.jdbc.Driver"
+                           username="******"
+                           password="######" />
+
+            <!-- Column mappings linking Log4j2 event properties to SQL fields -->
+            <Column name="log_date_time" isEventTimestamp="true" />
+            <Column name="thread_name" pattern="%tn" />
+            <Column name="log_level" pattern="%level" />
+            <Column name="logger_name" pattern="%logger" />
+            <Column name="log_message" pattern="%message" />
+            <Column name="exception_trace" pattern="%ex{full}" isClob="true" />
         </JDBC>
-        -->
+
 
         <!-- JSON Layout for structured logging (useful for log aggregation systems) -->
         <File name="JSON_FILE" fileName="${LOG_DIR}/application.json">
@@ -94,6 +94,7 @@
             <AppenderRef ref="FILE"/>
             <AppenderRef ref="ERROR_ROLLING_FILE"/>
             <AppenderRef ref="ROLLING_FILE"/>
+            <AppenderRef ref="DatabaseAppender"/>
         </Root>
 
         <!-- Separate logger for ERROR level to error file -->
