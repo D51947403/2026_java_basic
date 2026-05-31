@@ -50,24 +50,24 @@
         </Async>
 
         <!-- SMTP Appender - Email notifications for critical errors (Configure SMTP settings) -->
-        <!-- Uncomment and configure SMTP settings to enable -->
-        <!--
-        <SMTP name="SMTP" subject="Log Error Notification" to="admin@example.com"
-              from="logger@example.com" smtpHost="smtp.example.com" smtpPort="587"
-              smtpUsername="your_username" smtpPassword="your_password"
+
+
+        <SMTP name="SMTPAppender" subject="Log Error Notification" to="singrauld@yahoo.com"
+              from="singraul20codeblog@gmail.com" smtpHost="smtp.gmail.com" smtpPort="465"
+              smtpUsername="singraul20codeblog@gmail.com" smtpPassword="**** **** **** ****"
               smtpProtocol="smtps" bufferSize="50">
             <PatternLayout pattern="${LOG_PATTERN}"/>
             <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
         </SMTP>
-        -->
+
 
         <!-- JDBC Appender - Log to database (Configure database connection) -->
         <JDBC name="DatabaseAppender" tableName="application_logs">
             <!-- Replace with your actual database connection properties -->
-            <DriverManager connectionString="jdbc:mysql://localhost:3306/demo"
+            <DriverManager connectionString="jdbc:mysql://localhost:3306/library_db"
                            driverClassName="com.mysql.cj.jdbc.Driver"
-                           username="******"
-                           password="######" />
+                           username="*******"
+                           password="*******" />
 
             <!-- Column mappings linking Log4j2 event properties to SQL fields -->
             <Column name="log_date_time" isEventTimestamp="true" />
@@ -95,6 +95,7 @@
             <AppenderRef ref="ERROR_ROLLING_FILE"/>
             <AppenderRef ref="ROLLING_FILE"/>
             <AppenderRef ref="DatabaseAppender"/>
+            <AppenderRef ref="SMTPAppender"/>
         </Root>
 
         <!-- Separate logger for ERROR level to error file -->

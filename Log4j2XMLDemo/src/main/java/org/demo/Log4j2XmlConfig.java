@@ -9,7 +9,6 @@ public class Log4j2XmlConfig {
         System.out.println("=== Log4j2XmlConfig ===");
         // Demonstrate logging to all appenders
         demonstrateAllAppenders();
-
     }
 
     private static void demonstrateAllAppenders() {
