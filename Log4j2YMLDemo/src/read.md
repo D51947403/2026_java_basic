@@ -8,6 +8,7 @@ https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.15.
 
 https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.15.0/
 
+https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-config-yaml/3.0.0-beta3/log4j-config-yaml-3.0.0-beta3.jar
 
 
 ## File format Extension Order
