@@ -1,4 +1,4 @@
-# Log4j2 - Brief Overview
+# Apache Log4j2 - Brief Overview
 
 ## What is Log4j2?
 

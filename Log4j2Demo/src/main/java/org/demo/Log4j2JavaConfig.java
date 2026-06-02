@@ -1,4 +1,4 @@
-package main.java.org.demo;
+package org.demo;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
