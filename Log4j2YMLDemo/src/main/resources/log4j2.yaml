@@ -19,6 +19,7 @@ Configuration:
         - ref: "CONSOLE"
           level: "WARN"
         - ref: "MAIN"
+          level: "ERROR"
         - ref: "DEBUG_LOG"
     Logger:
       name: "org.demo"
