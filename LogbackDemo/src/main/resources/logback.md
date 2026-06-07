@@ -44,3 +44,8 @@ For Logback specific jar
   https://repo1.maven.org/maven2/ch/qos/logback/
 For SLF4j specific jar
   https://repo1.maven.org/maven2/org/slf4j/
+
+Note: The Logback 1.3.x series is the final release line designed specifically for Java 8 (JDK 8). 
+The last official release in this specific series is Logback 1.3.15.
+
+Both SLF4J 2.0.x and SLF4J 1.7.x are fully compatible with Java 8.
