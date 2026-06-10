@@ -20,11 +20,11 @@ public class LogbackDemo {
             logger.error("An unexpected error occurred", e);
         }
 
-        logger.trace("priting trace log");
-        logger.debug("priting debug log");
-        logger.info("priting info log");
-        logger.warn("priting warn log");
-        logger.error("priting error log");
+        logger.trace("printing trace log");
+        logger.debug("printing debug log");
+        logger.info("printing info log");
+        logger.warn("printing warn log");
+        logger.error("printing error log");
 
     }
 }
