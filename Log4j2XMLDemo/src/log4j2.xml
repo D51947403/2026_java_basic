@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration xmlns="https://logging.apache.org/xml/ns"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="
+                   https://logging.apache.org/xml/ns
+                   https://logging.apache.org/xml/ns/log4j-config-2.xsd"
+               status="WARN">
+
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+        <Property name="LOG_DIR">logs</Property>
+    </Properties>
+
+    <Appenders>
+        <!-- Console Appender - Essential for development and console output -->
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+
+        <!-- File Appender - Simple file logging -->
+        <File name="FILE" fileName="${LOG_DIR}/application.log" append="true">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </File>
+
+        <!-- RollingFile Appender - Log rotation based on size and time (Most useful for production) -->
+        <RollingFile name="ROLLING_FILE" fileName="${LOG_DIR}/app.log"
+                     filePattern="${LOG_DIR}/app-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="10KB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+
+        <!-- RollingFile for ERROR logs only -->
+        <RollingFile name="ERROR_ROLLING_FILE" fileName="${LOG_DIR}/error.log"
+                     filePattern="${LOG_DIR}/error-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="10MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <!-- Async Appender - Improves performance by offloading logging to separate thread -->
+        <Async name="ASYNC_FILE" bufferSize="512" includeLocation="false">
+            <AppenderRef ref="ROLLING_FILE"/>
+        </Async>
+
+        <!-- SMTP Appender - Email notifications for critical errors (Configure SMTP settings) -->
+
+
+        <SMTP name="SMTPAppender" subject="Log Error Notification" to="singrauld@yahoo.com"
+              from="singraul20codeblog@gmail.com" smtpHost="smtp.gmail.com" smtpPort="465"
+              smtpUsername="singraul20codeblog@gmail.com" smtpPassword="**** **** **** ****"
+              smtpProtocol="smtps" bufferSize="50">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+        </SMTP>
+
+
+        <!-- JDBC Appender - Log to database (Configure database connection) -->
+        <JDBC name="DatabaseAppender" tableName="application_logs">
+            <!-- Replace with your actual database connection properties -->
+            <DriverManager connectionString="jdbc:mysql://localhost:3306/library_db"
+                           driverClassName="com.mysql.cj.jdbc.Driver"
+                           username="*******"
+                           password="*******" />
+
+            <!-- Column mappings linking Log4j2 event properties to SQL fields -->
+            <Column name="log_date_time" isEventTimestamp="true" />
+            <Column name="thread_name" pattern="%tn" />
+            <Column name="log_level" pattern="%level" />
+            <Column name="logger_name" pattern="%logger" />
+            <Column name="log_message" pattern="%message" />
+            <Column name="exception_trace" pattern="%ex{full}" isClob="true" />
+        </JDBC>
+
+
+        <!-- JSON Layout for structured logging (useful for log aggregation systems) -->
+        <File name="JSON_FILE" fileName="${LOG_DIR}/application.json">
+            <JsonTemplateLayout/>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <!-- Root Logger -->
+        <Root level="INFO">
+            <AppenderRef ref="CONSOLE"/>
+            <AppenderRef ref="ASYNC_FILE"/>
+            <AppenderRef ref="JSON_FILE"/>
+            <AppenderRef ref="FILE"/>
+            <AppenderRef ref="ERROR_ROLLING_FILE"/>
+            <AppenderRef ref="ROLLING_FILE"/>
+            <AppenderRef ref="DatabaseAppender"/>
+            <AppenderRef ref="SMTPAppender"/>
+        </Root>
+
+        <!-- Separate logger for ERROR level to error file -->
+        <Logger name="ERROR_LOGGER" level="ERROR" additivity="false">
+            <AppenderRef ref="ERROR_ROLLING_FILE"/>
+            <AppenderRef ref="CONSOLE"/>
+        </Logger>
+
+        <!-- Example: Specific package logger with DEBUG level -->
+        <Logger name="org.demo" level="DEBUG" additivity="false">
+            <AppenderRef ref="CONSOLE"/>
+            <AppenderRef ref="ROLLING_FILE"/>
+        </Logger>
+
+    </Loggers>
+</Configuration>

@@ -37,7 +37,7 @@ public class BookDao {
 
             // Set parameter values
             cachedRowSet.setString(1, "The Great Gatsby");
-            cachedRowSet.setString(2, "974-0-7432-7356-5");
+            cachedRowSet.setString(2, "970-0-7432-7356-5");
             cachedRowSet.setInt(3, 1004); // author_id (Jane Austen)
             cachedRowSet.setInt(4, 2004); // publisher_id (Penguin Random House)
             cachedRowSet.setDate(5, java.sql.Date.valueOf("1925-04-10"));
@@ -130,7 +130,6 @@ public class BookDao {
             // Iterate through results
             while (jdbcRowSet.next()) {
                 BookDTO book = new BookDTO();
-                
                 // Set book details
                 book.setBookId(jdbcRowSet.getInt("book_id"));
                 book.setBookTitle(jdbcRowSet.getString("book_title"));
@@ -183,21 +182,21 @@ public class BookDao {
         BookDao bookDao = new BookDao();
 
         // Method 1: Direct values
-      //  bookDao.addBook();
+    //    bookDao.addBook();
 
         // Method 2: Using BookDTO
-        BookDTO book = new BookDTO();
-        book.setBookTitle("To Kill a Mockingbird");
-        book.setIsbn("978-0-06-112008-5");
-        book.setAuthorId(1009); // Toni Morrison
-        book.setPublisherId(2002); // HarperCollins
-        book.setPublicationDate(LocalDate.of(1960, 7, 11));
-        book.setPrice(new BigDecimal("14.99"));
-        book.setGenre("Classic Fiction");
-        book.setPages(324);
-        book.setLanguage("English");
-
-        // bookDao.addBook(book);
+//        BookDTO book = new BookDTO();
+//        book.setBookTitle("To Kill a Mockingbird");
+//        book.setIsbn("900-0-06-118008-5");
+//        book.setAuthorId(1009); // Toni Morrison
+//        book.setPublisherId(2002); // HarperCollins
+//        book.setPublicationDate(LocalDate.of(1960, 7, 11));
+//        book.setPrice(new BigDecimal("14.99"));
+//        book.setGenre("Classic Fiction");
+//        book.setPages(324);
+//        book.setLanguage("English");
+//
+//        bookDao.addBook(book);
 
       List<BookDTO> books =  bookDao.getAllBooks();
       System.out.println(books);

@@ -2,6 +2,8 @@ package com.practice.email;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Properties;
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -46,7 +48,7 @@ public class SendEmail {
 
     public void sendEmail(String to, String cc, String subject, String body) throws MessagingException {
         System.out.println("Sending email to " + to);
-        
+
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -133,13 +135,19 @@ public class SendEmail {
 
             emailSender.sendEmail(
                 "singrauld@yahoo.com,deepnarayanlodhi1@gmail.com",
-                "devendra20790@gmail.com",
-                "Test2 Subject2",
-                "This is a test email sent from Java application."
+                "singraul20codeblog@gmail.com",
+                "Today we are learning Java",
+                "This is a test email sent from Java application developed by Devendra"
             );
-            emailSender.sendEmailWithAttachment("singrauld@yahoo.com,deepnarayanlodhi1@gmail.com", "devendra20790@gmail.com", "Test2 with attachment Subject2", "This is a test email sent from Java application with attachment.", "D:\\2026_java_notes\\app_images\\front_image.jpg");
 
-            emailSender.sendHtmlEmail("singrauld@yahoo.com,deepnarayanlodhi1@gmail.com", "devendra20790@gmail.com", "Test2 HTML Subject2", "<h1>This is a test HTML email sent from Java application.</h1>");
+ //           emailSender.sendEmailWithAttachment("singrauld@yahoo.com,deepnarayanlodhi1@gmail.com", "singraul20codeblog@gmail.com", "Test2 with attachment Subject2", "This is a test email sent from Java application with attachment.", "D:\\2026_java_notes\\app_images\\front_image.jpg");
+            String htmlBody = null;
+            try {
+                htmlBody = new String(Files.readAllBytes(Paths.get("src/main/resources/mailtemplate.html")));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+         //   emailSender.sendHtmlEmail("singrauld@yahoo.com,deepnarayanlodhi1@gmail.com", "singraul20codeblog@gmail.com", "Test2 HTML Subject2", htmlBody);
         } catch (MessagingException e) {
             System.err.println("Error sending email: " + e.getMessage());
             e.printStackTrace();

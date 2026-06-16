@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="angus-mail-2.0.5">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../2026_java_notes/library-collection/java-mail/angus-mail-2.0.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

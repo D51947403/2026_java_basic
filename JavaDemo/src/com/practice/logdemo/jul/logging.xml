@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+    <!-- Global logging configuration -->
+    <name>error-log</name>
+    <level>INFO</level>
+    
+    <!-- Console Handler Configuration -->
+    <handler class="java.util.logging.ConsoleHandler">
+        <level>INFO</level>
+        <formatter class="com.practice.logdemo.jul.GlobalCustomFormatter">
+            <property name="format">[%1$tF %1$tT] [%2$-7s] %3$-20s: %4$s %n</property>
+        </formatter>
+        <encoding>UTF-8</encoding>
+    </handler>
+    
+    <!-- File Handler Configuration -->
+    <handler class="java.util.logging.FileHandler">
+        <level>ALL</level>
+        <formatter class="com.practice.logdemo.jul.GlobalCustomFormatter">
+            <property name="format">[%1$tF %1$tT] [%2$-7s] %3$-20s: %4$s %n</property>
+        </formatter>
+        <pattern>jul_xml_%g.log</pattern>
+        <limit>1028</limit>
+        <count>5</count>
+        <append>true</append>
+        <encoding>UTF-8</encoding>
+    </handler>
+    
+    <!-- Logger specific configuration -->
+    <logger name="com.practice.logdemo">
+        <level>ALL</level>
+        <handler class="java.util.logging.ConsoleHandler"/>
+        <handler class="java.util.logging.FileHandler"/>
+        <useParentHandlers>false</useParentHandlers>
+    </logger>
+</log>

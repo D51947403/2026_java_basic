@@ -45,7 +45,7 @@ public class ResultSetMetaDataDemo {
             System.out.println("Column Details:");
             System.out.println("--------------------------------------------------------------------------------------------------");
             System.out.printf("%-5s | %-20s | %-15s | %-15s | %-10s | %-15s | %-10s%n", 
-                "Pos", "Column Name", "Data Type", "Type Name", "Size", "Nullable", "Auto Inc");
+                "S.N.", "Column Name", "Data Type", "Type Name", "Size", "Nullable", "Auto Inc");
             System.out.println("--------------------------------------------------------------------------------------------------");
             
             for (int i = 1; i <= columnCount; i++) {

@@ -49,6 +49,7 @@ public class ExportExcelDataDemo {
                         Constants.NOT_DELETED // is_deleted is always 'N' for READ_ALL operation
                 );
                 adminList.add(admin);
+            }
                 // adding values
                 adminDataList.add(adminList);
 
@@ -59,7 +60,6 @@ public class ExportExcelDataDemo {
                     headerList.add(metaData.getColumnName(i));
                 }
                 adminDataList.add(headerList);
-            }
 
             // Get output parameters
             String message = callableStatement.getString(3);
@@ -98,7 +98,7 @@ public class ExportExcelDataDemo {
             List<String> headerList = (List<String>) adminDataList.get(1);
             
             // Create CSV file (can be opened in Excel)
-            String fileName = "admin_data_export.csv";
+            String fileName = "D:\\2026_java_notes\\admin_data_export.csv";
             fileWriter = new FileWriter(fileName);
             
             // Write headers

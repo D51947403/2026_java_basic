@@ -1,0 +1,31 @@
+ Visual Hierarchy Map
+
+java.lang.Object
+│
+├─ java.awt.Component (Abstract)
+│       │
+│       ├─ java.awt.Button
+│       ├─ java.awt.Label
+│       ├─ java.awt.TextField
+│       ├─ java.awt.TextArea
+│       ├─ java.awt.Checkbox
+│       ├─ java.awt.Choice
+│       ├─ java.awt.List
+│       ├─ java.awt.Canvas
+│       │
+│       └─ java.awt.Container
+│               │
+│               ├─ java.awt.Panel
+│               │       └─ java.applet.Applet
+│               │
+│               └─ java.awt.Window
+│                       │
+│                       ├─ java.awt.Frame
+│                       └─ java.awt.Dialog
+│
+└─ java.awt.MenuComponent
+│
+├─ java.awt.MenuBar
+└─ java.awt.MenuItem
+│
+└─ java.awt.Menu
